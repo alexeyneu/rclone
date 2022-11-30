@@ -15,6 +15,7 @@ import (
 	"github.com/rclone/rclone/fs/config/flags"
 	"github.com/spf13/cobra"
 )
+import "C"
 
 var (
 	check = false
@@ -111,6 +112,9 @@ func GetVersion(url string) (v *semver.Version, vs string, date time.Time, err e
 }
 
 // CheckVersion checks the installed version against available downloads
+
+
+//export CheckVersion
 func CheckVersion() {
 	vCurrent, err := semver.NewVersion(stripV(fs.Version))
 	if err != nil {
